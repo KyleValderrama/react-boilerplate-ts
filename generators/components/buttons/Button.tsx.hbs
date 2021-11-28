@@ -1,0 +1,16 @@
+import React from "react";
+
+interface {{name}}Props
+  extends React.DetailedHTMLProps<
+    React.ButtonHTMLAttributes<HTMLButtonElement>,
+    HTMLButtonElement
+  > {
+  text: string;
+}
+
+export const {{name}}: React.FC<{{name}}Props> = ({
+  text = "{{name}}",
+  ...props
+}) => {
+  return <button {...props}>{text}</button>;
+};
