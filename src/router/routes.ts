@@ -6,10 +6,6 @@ export const routes: Route[] = [
     import: () => import("@/modules/Login").then(({ route }) => route),
   },
   {
-    path: "register",
-    import: () => import("@/modules/Register").then(({ route }) => route),
-  },
-  {
     path: "/",
     import: () => import("@/modules/Landing").then(({ route }) => route),
   },

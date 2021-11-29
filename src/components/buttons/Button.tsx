@@ -1,16 +1,13 @@
 import React from "react";
 
-interface ButtonProps
+export interface ButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
-  text: string;
+  variant?: "primary" | "secondary";
 }
 
-export const Button: React.FC<ButtonProps> = ({
-  text = "Button",
-  ...props
-}) => {
-  return <button {...props}>{text}</button>;
+export const Button: React.FC<ButtonProps> = ({ children, ...props }) => {
+  return <button {...props}>{children || "Button"}</button>;
 };

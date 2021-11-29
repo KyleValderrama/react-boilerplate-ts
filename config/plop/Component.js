@@ -8,15 +8,15 @@ module.exports = {
       choices: [
         {
           name: "Button",
-          value: "-b",
+          value: "Button",
         },
         {
           name: "Layout",
-          value: "-l",
+          value: "Layout",
         },
         {
           name: "Form",
-          value: "-f",
+          value: "Form",
         },
       ],
     },
@@ -24,8 +24,8 @@ module.exports = {
       name: "name",
       type: "input",
       message: "Button Name",
-      when: function ({ type }) {
-        return type === "-b";
+      when: ({ type }) => {
+        return type === "Button";
       },
     },
   ],
@@ -35,7 +35,7 @@ module.exports = {
       path: "./src/components/buttons/index.ts",
       pattern: /[;]/,
       templateFile: "./generators/components/buttons/index.ts.hbs",
-      skip: function ({ type }) {
+      skip: ({ type }) => {
         return type !== "Button" ? "skip" : null;
       },
     },
@@ -43,7 +43,16 @@ module.exports = {
       type: "add",
       path: "./src/components/buttons/{{name}}.tsx",
       templateFile: "./generators/components/buttons/Button.tsx.hbs",
-      skip: function ({ type }) {
+      skip: ({ type }) => {
+        return type !== "Button" ? "skip" : null;
+      },
+    },
+    {
+      type: "add",
+      path: "./src/components/buttons/stories/{{name}}.stories.tsx",
+      templateFile:
+        "./generators/components/buttons/stories/Button.stories.tsx.hbs",
+      skip: ({ type }) => {
         return type !== "Button" ? "skip" : null;
       },
     },

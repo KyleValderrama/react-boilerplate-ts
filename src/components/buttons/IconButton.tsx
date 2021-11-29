@@ -1,15 +1,15 @@
 import React from "react";
 
-export interface {{name}}Props
+export interface IconButtonProps
   extends React.DetailedHTMLProps<
     React.ButtonHTMLAttributes<HTMLButtonElement>,
     HTMLButtonElement
   > {
 }
 
-export const {{name}}: React.FC<{{name}}Props> = ({
+export const IconButton: React.FC<IconButtonProps> = ({
   children,
   ...props
 }) => {
-  return <button {...props}>{children || "{{name}}"}</button>;
+  return <button {...props}>{children || "IconButton"}</button>;
 };

@@ -19,7 +19,7 @@ module.exports = {
       name: "routePath",
       type: "input",
       message: "Route Path:",
-      when: function ({ hasRoute }) {
+      when: ({ hasRoute }) => {
         return hasRoute;
       },
     },
@@ -29,7 +29,7 @@ module.exports = {
       type: "add",
       path: `${path}/{{name}}/index.ts`,
       templateFile: `${genPath}/index.ts.hbs`,
-      skip: function ({ hasRoute }) {
+      skip: ({ hasRoute }) => {
         return hasRoute ? "skip" : null;
       },
     },
@@ -37,7 +37,7 @@ module.exports = {
       type: "add",
       path: `${path}/{{name}}/index.ts`,
       templateFile: `${genPath}/index.r.ts.hbs`,
-      skip: function ({ hasRoute }) {
+      skip: ({ hasRoute }) => {
         return !hasRoute ? "skip" : null;
       },
     },
@@ -50,7 +50,7 @@ module.exports = {
       type: "add",
       path: `${path}/{{name}}/route.tsx`,
       templateFile: `${genPath}/route.tsx.hbs`,
-      skip: function ({ hasRoute }) {
+      skip: ({ hasRoute }) => {
         return !hasRoute ? "skip" : null;
       },
     },
@@ -65,11 +65,27 @@ module.exports = {
       templateFile: `${genPath}/components/index.ts.hbs`,
     },
     {
+      type: "add",
+      path: `./cypress/integration/units/{{name}}.spec.ts`,
+      templateFile: `${genPath}/test/Test.r.spec.ts.hbs`,
+      skip: ({ hasRoute }) => {
+        return !hasRoute ? "skip" : null;
+      },
+    },
+    {
+      type: "add",
+      path: `./cypress/integration/units/{{name}}.spec.ts`,
+      templateFile: `${genPath}/test/Test.spec.ts.hbs`,
+      skip: ({ hasRoute }) => {
+        return hasRoute ? "skip" : null;
+      },
+    },
+    {
       type: "append",
       path: "./src/router/routes.ts",
       pattern: /},/,
       templateFile: `${genPath}/router.ts.hbs`,
-      skip: function ({ hasRoute }) {
+      skip: ({ hasRoute }) => {
         return !hasRoute ? "skip" : null;
       },
     },
